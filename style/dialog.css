@@ -1,0 +1,20 @@
+/* import default */
+@import url('/library/dialog/style.css');
+
+/* personalize */
+#dialogWindow {
+  background-color: rgba(100, 100, 100, 0.3);
+}
+#dialogWindow div[data-type="inner"] {
+  background-color: #9BF;
+}
+#dialogWindow div[data-type="title"] {
+  background-color: #8AF;
+  color: white;
+}
+#dialogWindow div[data-type="text"] {
+  color: #038;
+}
+#dialogWindow button, #dialogWindow button:hover {
+  background-color: #EEE;
+}

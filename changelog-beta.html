@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/3g/favicon.ico">
+<title>Chat 3G - Changelog</title>
+
+<link rel="stylesheet" type="text/css" href="style/changelog.css">
+
+<script type="text/javascript">
+//return to the same anchor
+function returnHash() {
+var target='#'+location.hash.split("#")[1];
+if (target != "#undefined") document.getElementById("back").firstChild.href += target;
+}
+</script>
+
+</head>
+<body onload="returnHash()">
+<div id="wrapper">
+<div>
+
+<div id="back"><a href="changelog.html">Torna indietro</a></div>
+
+<h1>Changelog delle versioni di sviluppo della chat</h1>
+
+<div id="changelog">
+
+<div id="1">
+
+<h2>Versione 1</h2>
+
+<div id="1.0">
+
+<h3>Versione 1.0</h3>
+
+<div id="1.0-a1">
+<h4>Alpha 1</h4>
+<p>Risolto un bug che impediva il refresh simultaneo della lista utenti online e della lista dei messaggi.</p>
+<p>Modificata la struttura html per rispettare le specifiche HTML5.</p>
+<p>Miglioramenti di programmazione.</p>
+<p>Modificato il titolo in "Chat 2G".</p>
+<p>Resi trasparenti i bordi bianchi delle emoticon (eccetto l'emoticon "piange").</p>
+</div>
+
+<div id="1.0-a2">
+<h4>Alpha 2</h4>
+<p>Aggiunta un'animazione che rende il testo inviato semitrasparente finché non è stato elaborato e aggiunto nella lista dei messaggi (Non compatibile con Internet Explorer).</p>
+<p>Cancellata la vecchia lista dei messaggi.</p>
+<p>Aggiunta data e ora raggruppate nei messaggi.</p>
+<p>Aggiunta la versione corrente accanto al titolo della chat.</p>
+<p>Prima release numerata e creato il changelog delle versioni.</p>
+<p>Aggiunta la formattazione guidata.</p>
+</div>
+
+<div id="1.0-a3">
+<h4>Alpha 3</h4>
+<p>Creata versione alternativa per Internet Explorer in HTML 4.01.</p>
+<p>Validata la versione in HTML5 tramite il <a href="http://validator.w3.org/" target="_blank">W3C validator</a> con esito positivo.</p>
+<p>Risolto un bug sulla formattazione guidata.</p>
+<p>Risolto un bug sul redirect automatico alla versione per Internet Explorer.</p>
+</div>
+
+<br>
+
+<div id="1.0-b1">
+<h4>Beta 1</h4>
+<p>Resa beta accessibile agli utenti tramite conferma.</p>
+<p>Risolto un bug sull'accesso alla versione beta.</p>
+<p>La beta non include la versione per Internet Explorer.</p>
+<p>Modificata leggermente la grafica per il bottone di skip.</p>
+<p>Risolti bug minori di programmazione.</p>
+</div>
+
+<div id="1.0-b2">
+<h4>Beta 2</h4>
+<p>Migliorate prestazioni e velocità della chat.</p>
+<p>Risolto parzialmente il bug che causa il non corretto logout dalla lista utenti online.</p>
+<p>Aggiunto nel titolo visualizzato nel blog (prima-g.blogspot.com) relativo alla chat il numero di utenti online e il numero di messaggi non letti.</p>
+<p>Impostato un limite di 20 caratteri sulla lunghezza del nickname.</p>
+<p>Risolti bug minori.</p>
+</div>
+
+<div id="1.0-b3">
+<h4>Beta 3</h4>
+<p>Aggiunta la sintassi BBCode per la formatazione del testo.</p>
+<p>Modificato il processo per il rilevamento delle emoticon e risolti alcuni bug relativi.</p>
+<p>Risolto un bug sul raggruppamento di data e ora.</p>
+<p>Reso trasparente il bordo bianco dell'emoticon "piange".</p>
+<p>Aggiunta la data di ultima cancellazione dei contenuti.</p>
+<p>Corretto un bug che causava un errore sconosciuto.</p>
+<p>Migliorato il refresh dei messaggi che avviene solo se necessario.</p>
+</div>
+
+</div>
+
+</div>
+
+<div id="2">
+
+<h2>Versione 2</h2>
+
+<div id="2.0">
+
+<h3>Versione 2.0</h3>
+
+<div id="2.0-a1">
+<h4>Alpha 1</h4>
+<p>Cambiato titolo in "Chat 3G".</p>
+<p>Cancellata la vecchia lista messaggi.</p>
+<p>Piccoli cambiamenti a livello di programmazione lato server.</p>
+<p>Creato file di configurazione personale dove settare tutte le impostazioni velocemente.</p>
+</div>
+
+<div id="2.0-a2">
+<h4>Alpha 2</h4>
+<p>Unite le versioni tra browser diversi (da testarne la compatibilità).</p>
+<p>Integrato il sistema di riconoscimento degli utenti online con scadenza sessioni, <a href="/experiments/online/chat.php" target="_blank">precedentemente sviluppato</a>.</p>
+<p>Non è possibile effettuare l'accesso se un utente sta già usando il nickname scelto.</p>
+<p>Aggiunta l'opzione (implementato e funzionante) "memorizza il mio nickname" alla pagina di accesso.</p>
+<p>Aggiunta l'opzione (solo pulsante, non ancora implementato) "effettua il login automaticamente" alla pagina di accesso.</p>
+<p>Aggiunta la scheda "Impostazioni" dove poter cambiare il nickname (solo graficamente, funzione non implementata) e disattivare i suoni (funzione già implementata nelle versioni precedenti).</p>
+</div>
+
+<div id="2.0-a3">
+<h4>Alpha 3</h4>
+<p>Corretto bug relativo al controllo del nickname già in uso.</p>
+<p>Corretto un bug sulla funzione "memorizza il mio nickname".</p>
+<p>Corretto un bug sul caricamento della lista utenti online.</p>
+<p>Aggiunta la possibilità di cambiare il nickname (funzionante, prima era solo graficamente).</p>
+<p>Aggiunta la memorizzazione dell'impostazione "disattiva i suoni".</p>
+</div>
+
+<br>
+
+<div id="2.0-b1">
+<h4>Beta 1</h4>
+<p>Corretto un bug con la formattazione guidata che interferiva con il rinnovamento della sessione.</p>
+<p>Aggiunta la formattazione guidata con finestre di dialogo personalizzate create dal sottoscritto, precedentemente sviluppate <a href="/library/dialog/" target="_blank">qui</a>.</p>
+<p>Testati gli effetti sonori con i browser Safari, Chrome, Opera, Firefox e Internet Explorer. Con tutti funzionano, ma IE non supporta la funzione "disattiva suoni".</p>
+</div>
+
+<div id="2.0-b2">
+<h4>Beta 2</h4>
+<p>La beta è disponibile per Internet Explorer (corretti i bug che si verificavano con questo browser).</p>
+<p>Corretti dei bug con le finestre di dialogo personalizzate (il relativo changelog verrà <a href="/library/dialog/changelog.html" target="_blank">pubblicato qui</a>).</p>
+<p>Corretti alcuni bug con l'estrazione popup della chat sul blog.</p>
+<p>L'animazione dei messaggi inviati semitrasparenti finché non sono stati aggiunti alla lista messaggi è compatibile anche con Internet Explorer.</p>
+<p>Corretti bug minori.</p>
+</div>
+
+<div id="2.0-b3">
+<h4>Beta 3</h4>
+<p>Implementata la funzione "Effettua il login automaticamente".</p>
+<p>Corretti dei bug con l'estrazione popup della chat sul blog.</p>
+<p>Corretti bug minori.</p>
+<p>La funzione "Disattiva suoni" funziona con tutti i browser.</p>
+<p>I bug più prioritari sono stati risolti, la chat è pronta per essere rilasciata in versione stabile.</p>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+<div id="footer">
+Chat 3G by Matteo Bernardini
+</div>
+
+<!-- W3C validations -->
+<p style="text-align: right;">
+<a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" target="_blank" style="text-decoration:none;">
+    <img style="border:0;width:88px;height:31px"
+        src="/icons/valid-css-blue.png" alt="CSS Valido!">
+</a>
+
+<a href="http://validator.w3.org/check/referer?charset=iso-8859-1" target="_blank" style="text-decoration:none;">
+    <img style="border:0;width:88px;height:31px"
+        src="/icons/valid-html500-blue.png"
+        alt="HTML 5.0 Valido!">
+</a>
+</p>
+<!-- end W3C validations -->
+
+</div>
+</div>
+</body>
+</html>
