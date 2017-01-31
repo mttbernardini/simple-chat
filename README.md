@@ -2,7 +2,9 @@
 
 Questa chat non promette nulla di più di quanto dichiarato. È una chatroom sviluppata in PHP (partendo come modello da [Micro Chat][1]) senza account (basta un nickname per entrare) e senza database (memorizza i messaggi e le altre informazioni in file xml).
 
-Questo è stato il mio primo progetto in assoluto con cui ho imparato a programmare (avevo 14 anni), quindi non siate severi, sono consapevole che il codice è infantile e illeggibile. Il mio intento è quello di migliorarlo in modo che questo progetto (o una sua parte) possa tornare utile a qualcuno.
+Questo è stato il mio primo progetto in assoluto con cui ho imparato a programmare (avevo 14 anni). In particolare è nato come quello di una chat di gruppo per la mia classe (potreste trovare dei riferimenti a riguardo nei commit).
+
+Quindi non siate severi, sono consapevole che il codice è infantile e illeggibile. Il mio intento è quello di migliorarlo e generalizzarlo in modo che questo progetto (o una sua parte) possa tornare utile a qualcuno.
 
 ----------------
 

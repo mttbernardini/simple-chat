@@ -9,13 +9,13 @@ $maintValue="1293";
 $betaValue="1234";
 
 //Versione chat
-$title="Chat 4G";
+$title="Simple Chat";
 $version="3.1";
-$versLink="changelog.html#3.1";
+$versLink="changelog.md";
 
 //Impostazioni messaggi
-$welcomeMsg = "La chat della nostra classe. Qui possiamo scambiarci materiale scolastico, condividere idee, etc...";
-$clearDate = "31/03/13";
+$welcomeMsg = "Questa è una semplice chatroom sviluppata in php.";
+$clearDate = "2017-01-31";
 $maxMsgShown = 120;
 $timestampInter = 2; //Show timestamp when between two messages there are more than x minutes
 $timestampEach = 30; //Show timestamp anyway each x minutes
