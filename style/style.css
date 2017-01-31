@@ -227,12 +227,6 @@ input[type="text"]:focus {
     height: 3.1em;
 }
 
-#info div[data-content="W3CValid"] {
-    position: absolute;
-    right: 1em;
-    bottom: 0.2em;
-}
-
 /* IN #messages */
 p {
     margin: 0px;
