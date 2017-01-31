@@ -224,37 +224,61 @@
       input.focus();
     }
 
-    function inpFormat(bef, aft, done) {
-      var input=document.getElementById("msg"), format;
-      switch(bef) {
-      case "[b]":
-      format="<b>grassetto</b>"; break;
-      case "[i]":
-      format="<i>corsivo</i>"; break;
-      case "[u]":
-      format='<span style="text-decoration:underline;">sottolineato</span>'; break;
+    function inpFormat(type) {
+      var format;
+      switch(type) {
+        case "b":
+        format="grassetto"; break;
+        case "i":
+        format="corsivo"; break;
+        case "u":
+        format='sottolineato'; break;
       }
-      if (typeof(done)=="undefined")
-      dialog({type: "prompt", title: "Formattazione guidata", content: "Inserisci il testo da formattare in "+format, callBack: "inpFormat('"+bef+"', '"+aft+"', returnObj)"});
-      
-      if (typeof(done)=="object" && done.value!=undefined && done.value!="") {
-        input.value+=bef+done.value+aft;
+     
+      dialog({
+        type: "prompt",
+        title: "Formattazione guidata",
+        content: "Inserisci il testo da formattare in "+format,
+        callback: inpFormat2,
+        vars: { t: type }
+      });
+    }
+    
+    function inpFormat2(o) {
+      var input=document.getElementById("msg");
+      if (o.action && o.value!="") {
+        input.value += "[" + o.vars.t + "]" + o.value + "[/" + o.vars.t + "]";
         input.focus();
       }
     }
       
-    function inpLink(obj, link) {
+    function inpLink(obj) {
       var input=document.getElementById("msg");
       obj = obj || new Object;
 
       if (obj.id==undefined)
-      dialog({type: "prompt", title: "Formattazione guidata", content: "Inserisci il link della pagina web (includi anche http://)", defValue: "http://", id: "link", callBack: "inpLink(returnObj)"});
+      dialog({
+        type: "prompt",
+        title: "Formattazione guidata",
+        content: "Inserisci il link della pagina web (includi anche http://)",
+        placeholder: "http://",
+        id: "link",
+        callback: inpLink
+      });
 
-      else if (obj.id=="link" && obj.value!='' && obj.boolean)
-      dialog({type: "prompt", title: "Formattazione guidata", content: "Inserisci il testo da visualizzare (facoltativo)", id: "txt", callBack: "inpLink(returnObj, '"+obj.value+"')"});
+      else if (obj.id=="link" && obj.value!='' && obj.action)
+      dialog({
+        type: "prompt",
+        title: "Formattazione guidata",
+        content: "Inserisci il testo da visualizzare (facoltativo)",
+        id: "txt",
+        callback: inpLink,
+        vars: {link: obj.value}
+      });
 
-      else if (obj.id=="txt" && obj.boolean) {
+      else if (obj.id=="txt" && obj.action) {
         var txt=obj.value;
+        var link=obj.vars.link;
         if (txt!="") input.value+='[url='+link+']'+txt+'[/url]';
         else input.value+='[url]'+link+'[/url]';
         input.focus();

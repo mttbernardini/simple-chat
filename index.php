@@ -16,8 +16,8 @@ else {
 	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=8"/><![endif]-->
    <meta charset="UTF-8" />
    <title><?= $title; ?></title>
-   <link rel="icon" type="image/x-icon" href="/3g/favicon.ico" />
    <link href="style/style.css" rel="stylesheet" type="text/css" />
+   <link href="style/dialog_default.css" rel="stylesheet" type="text/css" />
    <link href="style/dialog.css" rel="stylesheet" type="text/css" />
 
    <!--[if IE]>
@@ -34,8 +34,8 @@ else {
    </style>
    <![endif]-->
 
-   <script type="text/javascript" src="/library/get_variables.js"></script>
-   <script type="text/javascript" src="/library/dialog/script.js"></script>
+   <script type="text/javascript" src="get_variables.js"></script>
+   <script type="text/javascript" src="dialog.js"></script>
    <script type="text/javascript">
    <![CDATA[
 
