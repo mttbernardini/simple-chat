@@ -2,14 +2,15 @@
 require_once("config.php");
 
 //in caso di manutenzione:
-if ($maint && $_COOKIE['maint']!=$maintValue) {
-if (!($beta && $_COOKIE['beta']==$betaValue)) {
-include("include/maintenance.html"); exit(); }
+if ($maint && $_COOKIE['maint'] != $maintValue && !($beta && $_COOKIE['beta'] == $betaValue)) {
+    include("include/maintenance.html");
+    exit();
 }
 
 //Escludere IE dalla Beta
-if ($noIE && $beta && $_COOKIE['beta']==$betaValue && stripos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== false) {
-include("include/maintenance-msie.html"); exit();
+if ($noIE && $beta && $_COOKIE['beta'] == $betaValue && stripos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== false) {
+    include("include/maintenance-msie.html");
+    exit();
 }
 
 function createForm(){
@@ -102,56 +103,65 @@ function createError() {
 
 //Define variables and cases
 
-   if (isset($_POST['aut'])) {
-    $username=trim(htmlspecialchars($_POST['name'], ENT_QUOTES, "UTF-8"));
-    if ($_POST['remember']) setcookie("username", $username, time() + (89 * 89 * 89 * 89));
-    else setcookie("username", $username);
-    setcookie("remember", $_POST['remember']=="on"?"1":"0", time() + (89 * 89 * 89 * 89));
-    setcookie("autologin", $_POST['autologin']=="on"?"1":"0", time() + (89 * 89 * 89 * 89));
+$timeToExpire = time() + (89 * 89 * 89 * 89);
+
+if (isset($_POST['aut'])) {
+    $username = trim(htmlspecialchars($_POST['name'], ENT_QUOTES, "UTF-8"));
+    
+    if ($_POST['remember']) {
+        setcookie("username", $username, $timeToExpire);
+        setcookie("remember", "1",       $timeToExpire);
+    } else {
+        setcookie("username", $username);
+        setcookie("remember", "0",       $timeToExpire);
+    }
+    
+    setcookie("autologin", $_POST['autologin']=="on"?"1":"0", $timeToExpire);
+    
     header("Location: user.php?do=login");
     exit();
-   }
-   if (isset($_GET['logout']) && $_COOKIE['logged']==1) {
+}
+if (isset($_GET['logout']) && $_COOKIE['logged'] == 1) {
     header("Location: user.php?do=logout");
     exit();
-   }
+}
 
-   $nickname=trim(htmlspecialchars($_COOKIE['username'], ENT_QUOTES, "UTF-8", false));
-
+$nickname = trim(htmlspecialchars($_COOKIE['username'], ENT_QUOTES, "UTF-8", false));
 
 
 function switchCases() {
-global $nickname;
+    global $nickname, $timeToExpire;
 
-  if (isset($_GET['invalid'])) {
-  createError(); }
+    if (isset($_GET['invalid']))
+        createError();
 
-  elseif (isset($_GET['logout']) && isset($_GET['login'])) {
-  header("Location: ?login=1");
-  exit(); }
+    elseif (isset($_GET['logout']) && isset($_GET['login'])) {
+        header("Location: ?login=1");
+        exit();
+    }
 
-  elseif ($_COOKIE['autologin'] && !empty($nickname) && ($_COOKIE['logged']==0 || empty($_COOKIE['logged']))) {
-  setcookie("username", $nickname, time() + (89 * 89 * 89 * 89));
-  setcookie("remember", "1", time() + (89 * 89 * 89 * 89));
-  setcookie("autologin", "1", time() + (89 * 89 * 89 * 89));
-  header("Location: user.php?do=login");
-  }
+    elseif ($_COOKIE['autologin'] && !empty($nickname) && ($_COOKIE['logged'] == 0 || empty($_COOKIE['logged']))) {
+        setcookie("username",  $nickname, $timeToExpire);
+        setcookie("remember",  "1",       $timeToExpire);
+        setcookie("autologin", "1",       $timeToExpire);
+        header("Location: user.php?do=login");
+    }
 
-  elseif (isset($_GET['logout'])) {
-  createForm(); }
+    elseif (isset($_GET['logout']))
+        createForm();
 
-  elseif (empty($_COOKIE['username']) || $_COOKIE['logged']==0 || empty($_COOKIE['logged'])) {
-  header("Location: ?logout=1");
-  exit(); }
+    elseif (empty($_COOKIE['username']) || $_COOKIE['logged'] == 0 || empty($_COOKIE['logged'])) {
+        header("Location: ?logout=1");
+        exit();
+    }
 
-  elseif (isset($_COOKIE['username']) && $_COOKIE['logged']==1 && isset($_GET['login'])) {
-  createChat();
-  }
+    elseif (isset($_COOKIE['username']) && $_COOKIE['logged'] == 1 && isset($_GET['login'])) {
+        createChat();
 
-  else {
-  header('Location: ?login=1');
-  exit(); }
-
+    else {
+        header('Location: ?login=1');
+        exit();
+    }
 }
 
 ?>
