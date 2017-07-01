@@ -28,8 +28,8 @@ $refreshAll=3;
 $renewSession=3;
 
 //File liste (pseudodatabase)
-$onlineSrc="data/online.xml";
-$msgSrc="data/msg.xml";
+$onlineSrc=__DIR__."/data/online.xml";
+$msgSrc=__DIR__."/data/msg.xml";
 
 //Altre impostazioni
 $logger = array(
@@ -39,7 +39,7 @@ $logger = array(
 	"expired-session" => true,
 	"messages" => true,
 	"msgcontent" => false,
-	"logfile" => "data/log.xml"
+	"logfile" => __DIR__."/data/log.xml"
 );
 
 ?>

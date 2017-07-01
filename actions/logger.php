@@ -1,6 +1,6 @@
 <?php
 
-require_once('config.php');
+require_once(__DIR__.'/../config.php');
 
 function write_log($time, $user, $action, $data=null) {
 
@@ -28,7 +28,7 @@ if (!empty($time) && !empty($user) && !empty($action)) {
 
     $theEvent->writeElement("timestamp", $time);
     $theEvent->startElement("details");
-    
+
      $theEvent->writeElement("user", $user);
      $theEvent->writeElement("action", $action);
      if ($data != null) {
@@ -36,11 +36,11 @@ if (!empty($time) && !empty($user) && !empty($action)) {
       $theEvent->writeCData($data);
       $theEvent->endElement();
      }
-     
+
     $theEvent->endElement();
 
    $theEvent->endElement();
-  
+
   $theEvent->text("</log>");
 
  $theEvent->endDocument();

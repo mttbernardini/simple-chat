@@ -1,7 +1,7 @@
 <?php
 
-require_once("config.php");
-if ($logger["users"]) require_once("include/logger.php");
+require_once(__DIR__."/../config.php");
+if ($logger["users"]) require_once(__DIR__."/logger.php");
 
 $now = time();
 

@@ -1,6 +1,6 @@
 <?php
 
-require("check_usr.php"); //Include anche il file di configurazione
+require(__DIR__."/../actions/check_usr.php"); //Include anche il file di configurazione
 
 $db = simplexml_load_file($onlineSrc);
 $count_usr = count($db->user);

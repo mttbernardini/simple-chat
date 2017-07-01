@@ -1,8 +1,7 @@
 <?php
 
-require_once("check_usr.php");
-
-if ($logger["users"]) require_once("include/logger.php");
+require_once("./actions/check_usr.php");
+if ($logger["users"]) require_once("./actions/logger.php");
 
 //define vars
 $user=isset($_GET['nick'])?$_GET['nick']:$_COOKIE['username'];
@@ -21,7 +20,7 @@ function login() {
    exit();
   }
   else {
-   header("Location: index.php?logout=1&namerequired=1");
+   header("Location: ./?logout=1&namerequired=1");
    exit();
   }
  }
@@ -54,7 +53,7 @@ function login() {
     exit();
    }
    else {
-    header("Location: index.php?logout=1&alreadylogged=1");
+    header("Location: ./?logout=1&alreadylogged=1");
     exit();
    }
   }
@@ -64,7 +63,7 @@ function login() {
    exit();
   }
   else {
-   header("Location: index.php?login=1");
+   header("Location: ./?login=1");
    exit();
   }
  }
@@ -86,7 +85,7 @@ function logout($redir=true) {
  if ($redir) {
   if (!$_COOKIE['remember']) setcookie("username", "", time()-1);
   setcookie("autologin", "", time()-1);
-  header("Location: index.php?logout=1");
+  header("Location: ./?logout=1");
   exit();
  }
 }

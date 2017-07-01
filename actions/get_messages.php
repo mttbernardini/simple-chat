@@ -2,7 +2,7 @@
 
 header("Content-type: application/json; charset=utf-8");
 
-require_once("config.php");
+require_once("../config.php");
 
 $db = simplexml_load_file($msgSrc, null, LIBXML_NOCDATA);
 $msgs = $db->msg;
@@ -26,7 +26,7 @@ for ($i=$lastMsg+1; $i<=$curMsg; $i++) {
 	else {
 		global $last, $lastAut;
 		$current = (int)$msg->time;
-		
+
 		if (date('Yz', $current) > date('Yz', $last)) {
 			$out .= '<p class="date">' . date('d/m/y', $current) . "</p>\n";
 			$out .= '<p class="time">' . date('H:i', $current) . "</p>\n";
@@ -36,7 +36,7 @@ for ($i=$lastMsg+1; $i<=$curMsg; $i++) {
 		  $out .= '<p class="time">' . date('H:i', $current) . "</p>\n";
 		  $lastAut="";
 		}
-		
+
 		$out .= '<p>';
 		$out .= '<span class="name">' . ((string)$msg->user==$lastAut ? "..." : $msg->user.":") . ' </span>';
 		$out .= '<span class="txt">' . $msg->data . '</span>';

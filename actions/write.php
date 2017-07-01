@@ -2,7 +2,7 @@
 
 header("Content-type: application/json; charset=utf-8");
 
-require_once('config.php');
+require_once('../config.php');
 require_once('configmsg.php');
 
 $dom = new DOMDocument();
@@ -36,14 +36,14 @@ if (!empty($_POST['msg'])) {
     $theMsg->endElement();
 
    $theMsg->endElement();
-  
+
   $theMsg->text("</messages>");
 
  $theMsg->endDocument();
 
 //LOG PART
 if ($logger["messages"]) {
-  require("include/logger.php");
+  require("logger.php");
   if ($logger["msgcontent"]) write_log($when, $who, "write", $msg);
   else write_log($when, $who, "write");
 }

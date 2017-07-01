@@ -30,7 +30,7 @@ else echo <<<JSO
 JSO;
 }
 else {
-header("Location: user.php?do=login&json=true");
+header("Location: ../user.php?do=login&json=true");
 exit();
 }
 

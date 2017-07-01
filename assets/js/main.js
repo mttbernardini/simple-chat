@@ -124,7 +124,7 @@
           playAudio("send-msg");
 
           var postReq = getHTTPObject();
-          var link = "write.php";
+          var link = "./actions/write.php";
           var vars = "nick="+encodeURIComponent(nickName)+"&msg="+encodeURIComponent(message);
           postReq.open("POST", link , true);
           postReq.onreadystatechange = function() {
@@ -145,8 +145,8 @@
         var randomnumber=Math.floor(Math.random()*10000);
         var msg = document.getElementById("n-messages").innerHTML;
         var online = document.getElementById("users-online").innerHTML;
-        var msgLink = 'get_messages.php?msg='+msg+'&rnd='+randomnumber;
-        var onlLink = 'get_users.php?rnd='+randomnumber;
+        var msgLink = './actions/get_messages.php?msg='+msg+'&rnd='+randomnumber;
+        var onlLink = './actions/get_users.php?rnd='+randomnumber;
         msgReq.open("GET", msgLink , true);
         msgReq.onreadystatechange = setMessages;
         msgReq.send();
@@ -163,7 +163,7 @@
       //Renew the session
       function doRenew() {
         var randomnumber=Math.floor(Math.random()*10000);
-        var link="renew_usr.php?";
+        var link="./actions/renew_usr.php?";
         link += "nick="+encodeURIComponent(nickName);
         link += "&audio="+document.getElementById("muteSound").checked;
         link += "&rnd="+randomnumber;
