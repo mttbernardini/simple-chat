@@ -4,17 +4,17 @@
    if (document.getElementById(id).play) return document.getElementById(id);
    else return document.getElementById(id).getElementsByTagName("embed")[0];
   }
-  
+
   function playAudio(id) {
   	if (getAudioById(id).muted) return;
   	else getAudioById(id).play();
   }
-  
+
   function parseJSON(string) {
    if (typeof(JSON)=="object" && JSON.parse) return JSON.parse(string);
    else return eval("(" + string + ")");
   }
-  
+
   function decodeHTML(str){
    var temp=document.createElement("pre");
    temp.innerHTML=str;
@@ -24,7 +24,7 @@
   //The rest of the code
 
   //if (_GET['login'] == 1) {
-   
+
     // Get the HTTP Object
     function getHTTPObject(){
       if (window.XMLHttpRequest) return new XMLHttpRequest();
@@ -38,35 +38,35 @@
     msgReq = getHTTPObject();
     onlReq = getHTTPObject();
     renewReq = getHTTPObject();
-    
-    
+
+
     if (getHTTPObject() != null) {
 
       // Output the messages list
       function setMessages() {
         if (msgReq.readyState == 4) {
           if (msgReq.status == 200) {
-          
+
             var m_old=parseInt(document.getElementById("n-messages").innerHTML);
-            
+
             obj = parseJSON(msgReq.responseText);
-            
+
             if (obj.newmgs=="overload") self.location.reload();
-            
+
             else if (obj.newmsg) {
-            
+
              document.getElementById("n-messages").innerHTML = parseInt(document.getElementById("n-messages").innerHTML) + obj.newmsg;
-            
+
              var msgList = document.getElementById("messages");
              var canScroll = ((msgList.scrollHeight - msgList.scrollTop) <= 320)?1:0;
              var scrolled = msgList.scrollTop;
-            
+
              msgList.innerHTML += obj.content;
 
              msgList.scrollTop = scrolled;
-            
+
              if (canScroll) msgList.scrollTop = msgList.scrollHeight;
-            
+
              var m_new=parseInt(document.getElementById("n-messages").innerHTML);
 
              if (m_new > m_old) {
@@ -74,28 +74,28 @@
                if (canScroll==0) document.getElementById("skip").style.display="block";
                parent.postMessage("NewMsg:"+(m_new - m_old), "*");
              }
-            
+
             }
-            
+
           }
         }
       }
-      
+
       // Output the online users list
       function setOnlines() {
         if(onlReq.readyState == 4) {
           if (onlReq.status == 200) {
-          
+
             var obj = parseJSON(onlReq.responseText);
-          
+
             var o_old=parseInt(document.getElementById('users-online').innerHTML);
-            
+
             var onlList = document.getElementById("online");
-            
+
             onlList.innerHTML = obj.content;
-            
+
             var o_new=parseInt(document.getElementById('users-online').innerHTML);
-            
+
             if (o_new > o_old) playAudio("new-user");
             if (o_new < o_old) playAudio("exit-user");
             parent.postMessage("Users:"+o_new, "*");
@@ -107,10 +107,10 @@
       function doPost() {
         var message = document.getElementById("msg").value.replace(/^\s+/, "");
         if (message != "") {
-        
+
           var n = document.getElementById("n-messages");
           n.innerHTML = parseInt(n.innerHTML)+1;
-            
+
           var objDiv = document.getElementById("messages");
           var par = document.createElement("p");
           par.setAttribute("class", "delivering");
@@ -120,7 +120,7 @@
           var inpObj = document.getElementById("msg");
           inpObj.value = "";
           inpObj.focus();
-            
+
           playAudio("send-msg");
 
           var postReq = getHTTPObject();
@@ -140,7 +140,7 @@
         }
       }
 
-      // Reloading request    
+      // Reloading request
       function doReload() {
         var randomnumber=Math.floor(Math.random()*10000);
         var msg = document.getElementById("n-messages").innerHTML;
@@ -159,7 +159,7 @@
         doReload();
         timerAll = setTimeout("UpdateTimer()", timeAll*1000);
       }
-      
+
       //Renew the session
       function doRenew() {
         var randomnumber=Math.floor(Math.random()*10000);
@@ -188,20 +188,20 @@
         renewReq.send();
         timerRenew = setTimeout("doRenew()", timeRenew*1000);
       }
-      
+
       function changeName() {
         var oldn = encodeURIComponent(nickName);
         var newn = encodeURIComponent(document.getElementById("inputNewName").value);
         var link = "user.php?do=changename&oldnick="+oldn+"&newnick="+newn;
         location.href=link;
       }
-    
+
       function keypressed(e){
         if(e.keyCode=='13'){
           doPost(); return false;
         }
       }
-      
+
     }
 
     function muteSound(check) {
@@ -209,7 +209,7 @@
       var b=getAudioById("send-msg");
       var c=getAudioById("new-user");
       var d=getAudioById("exit-user");
-      
+
       var anno = new Date();
       anno.setFullYear(anno.getFullYear() +1);
       var etc = " expires=" + anno.toGMTString();
@@ -234,7 +234,7 @@
         case "u":
         format='sottolineato'; break;
       }
-     
+
       dialog({
         type: "prompt",
         title: "Formattazione guidata",
@@ -243,7 +243,7 @@
         vars: { t: type }
       });
     }
-    
+
     function inpFormat2(o) {
       var input=document.getElementById("msg");
       if (o.action && o.value!="") {
@@ -251,7 +251,7 @@
         input.focus();
       }
     }
-      
+
     function inpLink(obj) {
       var input=document.getElementById("msg");
       obj = obj || new Object;
@@ -284,18 +284,18 @@
         input.focus();
       }
     }
-      
+
     function skipBT() {
       document.getElementById("skip").style.display="none";
       var a=document.getElementById("messages");
       a.scrollTop=a.scrollHeight;
     }
-    
+
     function checkBtn(div) {
       var btn = document.getElementById("skip").style;
       if ((div.scrollHeight-div.scrollTop)<=320  && btn.display=="block") btn.display="none";
     }
-    
+
     function init(req) {
       //FIX AUDIO PLAYING ON iDEVICES
       if ('ontouchstart' in document.documentElement) {
@@ -323,7 +323,7 @@
       document.getElementById("inputNewName").value=decodeHTML(nickName);
       muteSound(document.getElementById("muteSound"));
     }
-      
+
 //   }
 
 parent.postMessage("Users:Offline", "*");

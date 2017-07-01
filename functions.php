@@ -107,7 +107,7 @@ $timeToExpire = time() + (89 * 89 * 89 * 89);
 
 if (isset($_POST['aut'])) {
     $username = trim(htmlspecialchars($_POST['name'], ENT_QUOTES, "UTF-8"));
-    
+
     if ($_POST['remember']) {
         setcookie("username", $username, $timeToExpire);
         setcookie("remember", "1",       $timeToExpire);
@@ -115,9 +115,9 @@ if (isset($_POST['aut'])) {
         setcookie("username", $username);
         setcookie("remember", "0",       $timeToExpire);
     }
-    
+
     setcookie("autologin", $_POST['autologin']=="on"?"1":"0", $timeToExpire);
-    
+
     header("Location: user.php?do=login");
     exit();
 }

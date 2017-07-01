@@ -33,7 +33,7 @@ function login() {
    $dom->load($onlineSrc);
    $xml = new XMLWriter();
    $xml->openURI($onlineSrc);
-   
+
    $xml->setIndent(true);
    $xml->startDocument("1.0", "UTF-8");
    $xml->text("<users>");
@@ -44,7 +44,7 @@ function login() {
    $xml->endElement();
    $xml->text("</users>");
    $xml->endDocument();
-   
+
    if ($logger["login/out"]) write_log($now, $user, "login");
   }
   else {
@@ -80,7 +80,7 @@ function logout($redir=true) {
  }
  $outp = str_replace("\n\n", "", $f->asXML());
  $outp = str_replace("<users></users>", "<users>\n</users>", $outp);
- file_put_contents($onlineSrc, $outp); 
+ file_put_contents($onlineSrc, $outp);
  setcookie("logged", "0");
  if ($logger["login/out"]) write_log($now, $user, "logout");
  if ($redir) {
