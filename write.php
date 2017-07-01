@@ -56,10 +56,11 @@ if ($logger["messages"]) {
 
  $lastAut = $xml->msg[$nmsg-1]->user;
  $lastTime = (int)$xml->msg[$nmsg-1]->time;
+ $out = "";
 
  if (date('Yz', $when) > date('Yz', $lastTime)) {
-   $out = '<p class="date">' . date('d/m/y', $when) . "</p>\n";
-   $out.= '<p class="time">' . date('H:i', $when) . "</p>\n";
+   $out .= '<p class="date">' . date('d/m/y', $when) . "</p>\n";
+   $out .= '<p class="time">' . date('H:i', $when) . "</p>\n";
    $lastAut="";
  }
  elseif ((date('Gi', $when) >= date('Gi', $lastTime) + 2) || (is_int(date("i", $when)/$timestampEach) && !is_int(date("i", $lastTime)/$timestampEach) )) {

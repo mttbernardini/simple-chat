@@ -3,7 +3,7 @@ require_once("functions.php");
 
 if (stripos($_SERVER['HTTP_USER_AGENT'], "msie") !== false) {
 	header("Content-type: application/xml; charset=UTF-8");
-	echo '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<?xml-stylesheet type="text/xsl" href="style/iemode.xsl"?>'."\n";
+	echo '<?xml version="1.0" encoding="UTF-8"?>'."\n".'<?xml-stylesheet type="text/xsl" href="./assets/iemode.xsl"?>'."\n";
 }
 else {
 	header("Content-type: application/xhtml+xml; charset=UTF-8"); 
@@ -16,9 +16,9 @@ else {
 	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=8"/><![endif]-->
    <meta charset="UTF-8" />
    <title><?= $title; ?></title>
-   <link href="style/style.css" rel="stylesheet" type="text/css" />
-   <link href="style/dialog_default.css" rel="stylesheet" type="text/css" />
-   <link href="style/dialog.css" rel="stylesheet" type="text/css" />
+   <link href="./assets/css/main.css" rel="stylesheet" type="text/css" />
+   <link href="./assets/css/dialog_default.css" rel="stylesheet" type="text/css" />
+   <link href="./assets/css/dialog.css" rel="stylesheet" type="text/css" />
 
    <!--[if IE]>
    <script type="text/javascript">
@@ -34,8 +34,8 @@ else {
    </style>
    <![endif]-->
 
-   <script type="text/javascript" src="get_variables.js"></script>
-   <script type="text/javascript" src="dialog.js"></script>
+   <script type="text/javascript" src="./assets/js/get_variables.js"></script>
+   <script type="text/javascript" src="./assets/js/dialog.js"></script>
    <script type="text/javascript">
    <![CDATA[
 
@@ -53,7 +53,7 @@ else {
 
    //]]>
    </script>
-   <script type="text/javascript" src="script.js"></script>
+   <script type="text/javascript" src="./assets/js/main.js"></script>
 
 </head>
 
@@ -62,27 +62,27 @@ else {
 <body onload="if (_GET['login']==1) { UpdateTimer(); doRenew(); }">
 
   <audio id="new-msg" preload="auto">
-  <source type="audio/mpeg" src="style/new_msg.mp3" />
-  <source type="audio/ogg" src="style/new_msg.ogg" />
-  <embed type="audio/mpeg" src="style/new_msg.mp3" enablejavascript="true" autoplay="false" />
+  <source type="audio/mpeg" src="./assets/audio/new_msg.mp3" />
+  <source type="audio/ogg" src="./assets/audio/new_msg.ogg" />
+  <embed type="audio/mpeg" src="./assets/audio/new_msg.mp3" enablejavascript="true" autoplay="false" />
   </audio>
 
   <audio id="send-msg" preload="auto">
-  <source type="audio/mpeg" src="style/send_msg.mp3" />
-  <source type="audio/ogg" src="style/send_msg.ogg" />
-  <embed type="audio/mpeg" src="style/send_msg.mp3" enablejavascript="true" autoplay="false" />
+  <source type="audio/mpeg" src="./assets/audio/send_msg.mp3" />
+  <source type="audio/ogg" src="./assets/audio/send_msg.ogg" />
+  <embed type="audio/mpeg" src="./assets/audio/send_msg.mp3" enablejavascript="true" autoplay="false" />
   </audio>
 
   <audio id="new-user" preload="auto">
-  <source type="audio/mpeg" src="style/new_user.mp3" />
-  <source type="audio/ogg" src="style/new_user.ogg" />
-  <embed type="audio/mpeg" src="style/new_user.mp3" enablejavascript="true" autoplay="false" />
+  <source type="audio/mpeg" src="./assets/audio/new_user.mp3" />
+  <source type="audio/ogg" src="./assets/audio/new_user.ogg" />
+  <embed type="audio/mpeg" src="./assets/audio/new_user.mp3" enablejavascript="true" autoplay="false" />
   </audio>
 
   <audio id="exit-user" preload="auto">
-  <source type="audio/mpeg" src="style/exit_user.mp3" />
-  <source type="audio/ogg" src="style/exit_user.ogg" />
-  <embed type="audio/mpeg" src="style/exit_user.mp3" enablejavascript="true" autoplay="false" />
+  <source type="audio/mpeg" src="./assets/audio/exit_user.mp3" />
+  <source type="audio/ogg" src="./assets/audio/exit_user.ogg" />
+  <embed type="audio/mpeg" src="./assets/audio/exit_user.mp3" enablejavascript="true" autoplay="false" />
   </audio>
 
   <div id="JSdisabled"><div>Devi attivare javascript per poter utilizzare la chat.</div></div>

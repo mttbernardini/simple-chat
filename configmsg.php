@@ -10,11 +10,11 @@ $emot=array(':)'=>'happy', ':D'=>'very_happy', ':d'=>'very_happy', ';)'=>'wink',
 $emoticons='/(:\)|:D|;\)|:P|:\(|:4|;\(|:S|:\?|:\||:o|:1|:\$)/i';
 
 $string=preg_replace_callback($emoticons, function($m) use ($emot) {
-	return '<img alt=" '.$m[0].'" src="emoticons/'.$emot[$m[0]].'.gif" class="emot" />';
+	return '<img alt=" '.$m[0].'" src="./assets/emoticons/'.$emot[$m[0]].'.gif" class="emot" />';
 }, $string);
 
 
-//replace errors
+//replace common errors
 $string=str_ireplace('perchè', 'perché', $string);
 $string=str_replace("PERCHE'", 'PERCHÉ', $string);
 $string=str_replace(" E'", ' È', $string);
