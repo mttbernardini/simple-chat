@@ -7,9 +7,11 @@ $string = htmlspecialchars($string, ENT_COMPAT, "UTF-8");
 
 //replace emoticons
 $emot=array(':)'=>'happy', ':D'=>'very_happy', ':d'=>'very_happy', ';)'=>'wink', ':P'=>'tongue', ':p'=>'tongue', ':('=>'sad', ':4'=>'angry', ';('=>'cry', ':S'=>'confused', ':s'=>'confused', ':?'=>'dont_know', ':|'=>'surprised', ':o'=>'omg', ':O'=>'omg', ':1'=>'thoughtful', ':$'=>'embarrassed');
-$emoticons='/(:\)|:D|;\)|:P|:\(|:4|;\(|:S|:\?|:\||:o|:1|:\$)/ie';
+$emoticons='/(:\)|:D|;\)|:P|:\(|:4|;\(|:S|:\?|:\||:o|:1|:\$)/i';
 
-$string=preg_replace($emoticons, '"<img alt=\" $1\" src=\"emoticons/".$emot["$1"].".gif\" class=\"emot\" />"', $string);
+$string=preg_replace_callback($emoticons, function($m) use ($emot) {
+	return '<img alt=" '.$m[0].'" src="emoticons/'.$emot[$m[0]].'.gif" class="emot" />';
+}, $string);
 
 
 //replace errors
