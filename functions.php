@@ -155,7 +155,7 @@ function switchCases() {
         exit();
     }
 
-    elseif (isset($_COOKIE['username']) && $_COOKIE['logged'] == 1 && isset($_GET['login'])) {
+    elseif (isset($_COOKIE['username']) && $_COOKIE['logged'] == 1 && isset($_GET['login']))
         createChat();
 
     else {
