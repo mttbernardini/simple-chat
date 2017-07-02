@@ -1,17 +1,17 @@
 /* personalize */
 .dialog-window {
-  background-color: rgba(100, 100, 100, 0.3);
+	background-color: rgba(100, 100, 100, 0.3);
 }
 .dialog-wrapper {
-  background-color: #9BF;
+	background-color: #9BF;
 }
 .dialog-title {
-  background-color: #8AF;
-  color: white;
+	background-color: #8AF;
+	color: white;
 }
 .dialog-message {
-  color: #038;
+	color: #038;
 }
 .dialog-actions button, .dialog-actions button:hover {
-  background-color: #EEE;
+	background-color: #EEE;
 }

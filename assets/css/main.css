@@ -1,315 +1,315 @@
 /* IE SUPPORT */
 header, hgroup, section, article, aside, footer {
-    display: block;
+	display: block;
 }
 
 
 body {
-    margin: 0px;
-    background-color: white;
+	margin: 0px;
+	background-color: white;
 }
 #main {
-    margin: 0px;
-    border: none;
-    width: 480px;
-    height: 460px;
-    padding: 0px 10px;
-    background-color: #F1F3F5;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size : 12px;
-    text-align: left;
+	margin: 0px;
+	border: none;
+	width: 480px;
+	height: 460px;
+	padding: 0px 10px;
+	background-color: #F1F3F5;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	text-align: left;
 
-    /* margin: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    margin-top: -240px; */
+	/* margin: auto;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	margin-top: -240px; */
 }
 
 #main > header, #main > section {
-    position: relative;
+	position: relative;
 }
 
 /* FORM DI ACCESSO */
 form div {
-    margin: 5px 0px;
+	margin: 5px 0px;
 }
 
 /* SEZIONI */
 
 #main > header {
-    height: 48px;
+	height: 48px;
 }
 
 #main h1 {
-    font-weight: bold;
-    margin: 0px;
-    padding-top: 8px;
-    font-size : 25px;
-    color: #C64934;
+	font-weight: bold;
+	margin: 0px;
+	padding-top: 8px;
+	font-size : 25px;
+	color: #C64934;
 }
 
 #icon {
-    width: 60px;
-    height: 46px;
-    padding: 0px;
-    border: 0px;
-    float: left;
-    background-image: url("../icons/icon.gif");
-    background-repeat: no-repeat;
+	width: 60px;
+	height: 46px;
+	padding: 0px;
+	border: 0px;
+	float: left;
+	background-image: url("../icons/icon.gif");
+	background-repeat: no-repeat;
 }
 
 #version {
-    position: absolute;
-    bottom: 1em;
-    right: 10px;
-    font-weight: bold;
+	position: absolute;
+	bottom: 1em;
+	right: 10px;
+	font-weight: bold;
 }
 
 #version a {
-    color: black;
-    text-decoration: none;
+	color: black;
+	text-decoration: none;
 }
 
 #messages, #online, #settings, #sender {
-    border-radius: 5px;
-    border: 1px solid #CCC;
+	border-radius: 5px;
+	border: 1px solid #CCC;
 }
 
 #to-reload {
-    float: left;
-    clear: both;
-    margin-bottom: 16px;
-    height: 305px;
+	float: left;
+	clear: both;
+	margin-bottom: 16px;
+	height: 305px;
 }
 
 #messages, #online, #settings {
-    background-color: #E9ECEF;
-    padding: 2px 5px;
-    height: 100%;
-    overflow: auto;
-    word-wrap: break-word;
+	background-color: #E9ECEF;
+	padding: 2px 5px;
+	height: 100%;
+	overflow: auto;
+	word-wrap: break-word;
 }
 
 #settings {
-    display: none;
-    position: absolute;
-    width: 478px;
-    height: 399px;
-    z-index: 3;
-    margin: 0;
-    padding: 0;
+	display: none;
+	position: absolute;
+	width: 478px;
+	height: 399px;
+	z-index: 3;
+	margin: 0;
+	padding: 0;
 }
 
 #messages {
-    float: left;
-    width: 325px;
-    margin-right: 6px;
+	float: left;
+	width: 325px;
+	margin-right: 6px;
 }
 
 #online {
-    float: right;
-    width: 125px;
-    font-weight: 500;
+	float: right;
+	width: 125px;
+	font-weight: 500;
 }
 
 #sender {
-   clear: both;
-   background-color: #DCE5EB;
-   font-weight: bold;
-   font-size: 12px;
-   padding: 5px;
+	clear: both;
+	background-color: #DCE5EB;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 5px;
 }
 
 /* GENERIC ELEMENTS */
 audio, embed {
-   position: absolute;
-   width: 0px;
-   height: 0px;
+	position: absolute;
+	width: 0px;
+	height: 0px;
 }
 
 #JSdisabled, #noAJAX {
-   display: none;
-   background-color: rgba(170, 187, 204, 0.3);
-   position: absolute;
-   height: 460px;
-   width: 500px;
-   z-index: 2;
+	display: none;
+	background-color: rgba(170, 187, 204, 0.3);
+	position: absolute;
+	height: 460px;
+	width: 500px;
+	z-index: 2;
 }
 
 #JSdisabled {
-   display: block;
+	display: block;
 }
 
 #noAJAX div {
-    z-index: 10;
-    padding: 3px;
-    background-color: #F2F2F2;
-    position: relative;
-    top: 10%;
+	z-index: 10;
+	padding: 3px;
+	background-color: #F2F2F2;
+	position: relative;
+	top: 10%;
 }
 
 #JSdisabled div {
-    z-index: 10;
-    float: right;
-    padding: 3px;
-    background-color: #F2F2F2;
+	z-index: 10;
+	float: right;
+	padding: 3px;
+	background-color: #F2F2F2;
 }
 
 .error {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    font-size: 10px;
-    color: #dd1111;
-    padding:5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10px;
+	color: #dd1111;
+	padding:5px;
 
 }
 
 button {
-    padding: 1px 6px;
-    height: 20px;
-    border: 1px solid #CCC;
-    font-size: 13px;
-    border-radius: 5px;
-    background-color: #EEE;
-    background-image: url("../icons/grad-button.svg");
-    background-repeat: repeat-x;
-    background-position: 0px 0px;
+	padding: 1px 6px;
+	height: 20px;
+	border: 1px solid #CCC;
+	font-size: 13px;
+	border-radius: 5px;
+	background-color: #EEE;
+	background-image: url("../icons/grad-button.svg");
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
 }
 
 button:active {
-    background-position: 0px -20px;
+	background-position: 0px -20px;
 }
 
 input {
-    border: 1px solid #CCC;
+	border: 1px solid #CCC;
 }
 
 input[type="text"] {
-    border-radius: 3px;
-    padding: 1px;
-    width: 70%;
-    height: 16px;
+	border-radius: 3px;
+	padding: 1px;
+	width: 70%;
+	height: 16px;
 }
 
 input[type="text"]:focus {
-    outline: none;
-    border: 1px solid #888;
+	outline: none;
+	border: 1px solid #888;
 }
 
 /* IN #settings */
 #closeSettings {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 25px;
-    width: 25px;
-    text-align: center;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: default;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 25px;
+	width: 25px;
+	text-align: center;
+	border-radius: 10px;
+	font-weight: bold;
+	cursor: default;
 }
 
 #settings > article {
-    overflow: auto;
-    height: 360px;
-    position: relative;
+	overflow: auto;
+	height: 360px;
+	position: relative;
 }
 
 #info {
-    position: absolute;
-    z-index: 6;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px inset #DDD;
-    height: 3.1em;
+	position: absolute;
+	z-index: 6;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px inset #DDD;
+	height: 3.1em;
 }
 
 /* IN #messages */
 p {
-    margin: 0px;
-    padding: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 #messages .name {
-    font-weight: bold;
-    font-style: italic;
-    color: #999;
+	font-weight: bold;
+	font-style: italic;
+	color: #999;
 }
 
 #messages .txt {
-    font-weight: normal;
-    color: #333;
+	font-weight: normal;
+	color: #333;
 }
 
 #messages .int {
-    font-weight: bold;
-    color: #555;
+	font-weight: bold;
+	color: #555;
 }
 
 #messages .delivering {
-    opacity: 0.5;
+	opacity: 0.5;
 }
 
 #messages .date {
-    font-weight: bold;
-    float: right;
-    margin-right: 0.5em;
+	font-weight: bold;
+	float: right;
+	margin-right: 0.5em;
 }
 
 #messages .time {
-    margin-left: 0.5em;
-    font-weight: bold;
-    font-style: italic;
-    color: #252525;
+	margin-left: 0.5em;
+	font-weight: bold;
+	font-style: italic;
+	color: #252525;
 }
 
 #messages .emot {
-    vertical-align: -4px;
-    height: 16px;
-    width: 16px;
-    margin: 2px 1px;
+	vertical-align: -4px;
+	height: 16px;
+	width: 16px;
+	margin: 2px 1px;
 }
 
 #msg-num {
-    display: none;
+	display: none;
 }
 
 #skip {
-    position: relative;
-    bottom: 1px;
-    width: 337px;
-    height: 12px;
-    border: 1px solid #CCC;
-    text-align: center;
-    font-size: 10px;
-    padding: 0px;
-    z-index: 2;
-    display: none;
+	position: relative;
+	bottom: 1px;
+	width: 337px;
+	height: 12px;
+	border: 1px solid #CCC;
+	text-align: center;
+	font-size: 10px;
+	padding: 0px;
+	z-index: 2;
+	display: none;
 }
 
 #n-messages {
-    display: none;
+	display: none;
 }
 
 /* IN #SENDER */
 #nick {
-    text-decoration: underline;
-    font-weight: bold;
+	text-decoration: underline;
+	font-weight: bold;
 }
 
 #tools img, .link {
-    color: blue;
-    font-style: italic;
-    font-weight: 500;
-    text-decoration: underline;
-    cursor: pointer;
+	color: blue;
+	font-style: italic;
+	font-weight: 500;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 #tools button {
-    position: relative;
-    bottom: 5px;
-    margin: 0px;
+	position: relative;
+	bottom: 5px;
+	margin: 0px;
 }

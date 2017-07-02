@@ -1,63 +1,63 @@
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  body > div {
-    position: absolute;
-    overflow: auto;
-    height: 100%;
-  }
+	body > div {
+		position: absolute;
+		overflow: auto;
+		height: 100%;
+	}
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #F1F3F5;
-    font-size: 16px;
-    text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #F1F3F5;
+	font-size: 16px;
+	text-align: left;
 }
 
 #back {
-    position: fixed;
-    right: 1%;
-    top: 10px;
-    padding: 5px;
-    background-color: #F1F3F5;
+	position: fixed;
+	right: 1%;
+	top: 10px;
+	padding: 5px;
+	background-color: #F1F3F5;
 }
 
 p {
-    margin: 0px;
-    margin-left: 2em;
-    padding: 0px;
+	margin: 0px;
+	margin-left: 2em;
+	padding: 0px;
 }
 
 .name {
-    font-weight: bold;
-    font-style: italic;
-    color: #999;
+	font-weight: bold;
+	font-style: italic;
+	color: #999;
 }
 
 .txt {
-    font-weight: normal;
-    color: #333;
+	font-weight: normal;
+	color: #333;
 }
 
 .int {
-    font-weight: bold;
-    color: #555; 
+	font-weight: bold;
+	color: #555;
 }
 
 .date {
-    font-weight: bold;
-    margin-left: 0.5em;
+	font-weight: bold;
+	margin-left: 0.5em;
 }
 
 .time {
-    margin-left: 1em;
-    font-weight: bold;
-    font-style: italic;
-    color: #252525;
+	margin-left: 1em;
+	font-weight: bold;
+	font-style: italic;
+	color: #252525;
 }
 
 .emot {
-    vertical-align: -4px;
-    height: 16px;
-    width: 16px;
-    margin: 2px 1px;
+	vertical-align: -4px;
+	height: 16px;
+	width: 16px;
+	margin: 2px 1px;
 }
