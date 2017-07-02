@@ -27,15 +27,13 @@ if ($_COOKIE['logged'] == 1) {
 		file_put_contents($onlineSrc, $f->asXML());
 
 		if ($_GET['nick'] == $user && $_GET['audio'] == $_COOKIE['muteSound'])
-			echo "{\n".'"status": "done",'."\n".'"action": "renewed"'."\n}";
+			echo '{"status": "done", "action": "renewed"}';
 
-		else echo <<<JSO
-			{
-				"status": "done",
-				"action": "newdata",
-				"newData": { "nickName": "$user", "muteSound": {$_COOKIE['muteSound']} }
-			}
-		JSO;
+		else echo '{'.
+			'"status": "done", '.
+			'"action": "newdata", '.
+			'"newData": {"nickName": "'.$user.'", "muteSound": '.$_COOKIE['muteSound'].'}'.
+			'}';
 	}
 	else { // force login
 		header("Location: ../user.php?do=login&json=true");
@@ -45,6 +43,6 @@ if ($_COOKIE['logged'] == 1) {
 }
 
 else
-	echo '{ "status": "fail", "action": "notlogged" }';
+	echo '{"status": "fail", "action": "notlogged"}';
 
 ?>
