@@ -5,75 +5,73 @@ header("Content-type: application/json; charset=utf-8");
 require_once('../config.php');
 require_once('configmsg.php');
 
+if ($logger["messages"])
+	require("logger.php");
+
 $dom = new DOMDocument();
 $dom->load($msgSrc);
 $theMsg = new XMLWriter();
 
-$msg = format($_POST['msg']);
-$who = $_POST['nick'];
+$msg  = format($_POST['msg']);
+$who  = $_POST['nick'];
 $when = time();
 
 if (!empty($_POST['msg'])) {
 
-//WRITE PART
+	//WRITE PART
+	$theMsg->openURI($msgSrc);
+	$theMsg->setIndent(true);
+	$theMsg->startDocument("1.0", "UTF-8");
 
- $theMsg->openURI($msgSrc);
+	$theMsg->text("<messages>");
 
- $theMsg->setIndent(true);
+	// append old messages
+	foreach ($dom->documentElement->childNodes as $node)
+		$theMsg->text($dom->saveXML($node));
 
- $theMsg->startDocument("1.0", "UTF-8");
+	// append new message
+	$theMsg->startElement("msg");
 
-  $theMsg->text("<messages>");
+	$theMsg->writeElement("time", $when);
+	$theMsg->writeElement("user", $who);
+	$theMsg->startElement("data");
+	$theMsg->writeCData($msg);
+	$theMsg->endElement();
 
-   foreach ($dom->documentElement->childNodes as $node) $theMsg->text($dom->saveXML($node));
+	$theMsg->endElement(); // </msg>
+	$theMsg->text("</messages>");
 
-   $theMsg->startElement("msg");
+	$theMsg->endDocument();
 
-    $theMsg->writeElement("time", $when);
-    $theMsg->writeElement("user", $who);
-    $theMsg->startElement("data");
-    $theMsg->writeCData($msg);
-    $theMsg->endElement();
-
-   $theMsg->endElement();
-
-  $theMsg->text("</messages>");
-
- $theMsg->endDocument();
-
-//LOG PART
-if ($logger["messages"]) {
-  require("logger.php");
-  if ($logger["msgcontent"]) write_log($when, $who, "write", $msg);
-  else write_log($when, $who, "write");
-}
+	//LOG PART
+	if ($logger["messages"])
+		write_log($when, $who, "write", $logger["msgcontent"] ? $msg : null);
 
 
-//RETURN PART
+	//RETURN PART
+	$xml  = simplexml_import_dom($dom);
+	$nmsg = count($xml->msg);
 
- $xml = simplexml_import_dom($dom);
- $nmsg = count($xml->msg);
+	$lastAut  = $xml->msg[$nmsg-1]->user;
+	$lastTime = (int)$xml->msg[$nmsg-1]->time;
+	$out = "";
 
- $lastAut = $xml->msg[$nmsg-1]->user;
- $lastTime = (int)$xml->msg[$nmsg-1]->time;
- $out = "";
+	if (date('Yz', $when) > date('Yz', $lastTime)) {
+		$out .= '<p class="date">' . date('d/m/y', $when) . "</p>\n";
+		$out .= '<p class="time">' . date('H:i', $when) . "</p>\n";
+		$lastAut="";
+	}
+	elseif ((date('Gi', $when) >= date('Gi', $lastTime) + $timestampInter) || (is_int(date("i", $when) / $timestampEach) && !is_int(date("i", $lastTime) / $timestampEach) )) {
+		$out .= '<p class="time">' . date('H:i', $when) . "</p>\n";
+		$lastAut="";
+	}
 
- if (date('Yz', $when) > date('Yz', $lastTime)) {
-   $out .= '<p class="date">' . date('d/m/y', $when) . "</p>\n";
-   $out .= '<p class="time">' . date('H:i', $when) . "</p>\n";
-   $lastAut="";
- }
- elseif ((date('Gi', $when) >= date('Gi', $lastTime) + 2) || (is_int(date("i", $when)/$timestampEach) && !is_int(date("i", $lastTime)/$timestampEach) )) {
-   $out .= '<p class="time">' . date('H:i', $when) . "</p>\n";
-   $lastAut="";
- }
+	$out .= '<p>';
+	$out .= '<span class="name">' . ($who == $lastAut ? "..." : $who.":") . ' </span>';
+	$out .= '<span class="txt">' . $msg . '</span>';
+	$out .= "</p>\n";
 
- $out .= '<p>';
- $out .= '<span class="name">' . ($who==$lastAut ? "..." : $who.":") . ' </span>';
- $out .= '<span class="txt">' . $msg . '</span>';
- $out .= "</p>\n";
-
- echo "{\n".'"content": '.json_encode($out)."\n}";
+	echo '{ "content": '.json_encode($out).' }';
 
 }
 

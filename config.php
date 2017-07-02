@@ -37,7 +37,7 @@ $logger = array(
 	"login/out" => true,
 	"login-fail" => true,
 	"expired-session" => true,
-	"messages" => true,
+	"messages" => false,
 	"msgcontent" => false,
 	"logfile" => __DIR__."/data/log.xml"
 );
