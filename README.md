@@ -8,9 +8,9 @@ Quindi non siate severi, sono consapevole che il codice è infantile e illeggibi
 
 ----------------
 
-Made by: Matteo Bernardini, [@mttbernardini][2].
+&copy; 2011 Matteo Bernardini, [@mttbernardini][2].
 
-This project is shared with the MIT license.  
+This project is licensed under the Apache License 2.0.  
 Please refer to the LICENSE file for further information.
 
 
