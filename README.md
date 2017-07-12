@@ -1,5 +1,7 @@
 # simple-chat, una chatroom in PHP ridotta all'osso e senza database #
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/69298e5725ae45e983167175ab365a1c)](https://www.codacy.com/app/mttbernardini/simple-chat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mttbernardini/simple-chat&amp;utm_campaign=Badge_Grade)
+
 Questa chat non promette nulla di più di quanto dichiarato. È una chatroom sviluppata in PHP (partendo come modello da [Micro Chat][1]) senza account (basta un nickname per entrare) e senza database (memorizza i messaggi e le altre informazioni in file xml).
 
 Questo è stato il mio primo progetto in assoluto con cui ho imparato a programmare (avevo 14 anni). In particolare è nato come quello di una chat di gruppo per la mia classe (potreste trovare dei riferimenti a riguardo nei commit).
