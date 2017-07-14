@@ -20,19 +20,9 @@ function decodeHTML(str){
 
 //The rest of the code
 
-// Get the HTTP Object
-function getHTTPObject(){
-	if (window.XMLHttpRequest) return new XMLHttpRequest();
-	else if (window.ActiveXObject) return new ActiveXObject("Microsoft.XMLHTTP");
-	else {
-		document.getElementById("noAJAX").style.display="block";
-		return null;
-	}
-}
-
-msgReq = getHTTPObject();
-onlReq = getHTTPObject();
-renewReq = getHTTPObject();
+msgReq = new XMLHttpRequest(); // TODO: handle unsupported fallback
+onlReq = new XMLHttpRequest();
+renewReq = new XMLHttpRequest();
 
 
 // Output the messages list
@@ -112,7 +102,7 @@ function doPost() {
 
 		playAudio("send-msg");
 
-		var postReq = getHTTPObject();
+		var postReq = new XMLHttpRequest();
 		var link = "./actions/write.php";
 		var vars = "nick="+encodeURIComponent(nickName)+"&msg="+encodeURIComponent(message);
 		postReq.open("POST", link , true);
