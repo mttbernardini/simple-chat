@@ -39,9 +39,9 @@ else {
 	<script type="text/javascript">
 	<![CDATA[
 		var _GET = GETvars();
-		var dialogSettings = {
+		dialogSettings = {
 			defTitle: "Messaggio",
-			defContent: "<i>Testo mancante</i>",
+			defContent: "",
 			continueText: "Continua",
 			cancelText: "Annulla"
 		};
