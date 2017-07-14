@@ -41,7 +41,7 @@ else {
 		var _GET = GETvars();
 		dialogSettings = {
 			defTitle: "Messaggio",
-			defContent: "",
+			defContent: " ",
 			continueText: "Continua",
 			cancelText: "Annulla"
 		};
@@ -98,7 +98,7 @@ else {
 	<script type="text/javascript">
 	<![CDATA[
 		document.getElementById("JSdisabled").style.display="none";
-		if (_GET['login']==1) init();
+		if (_GET['login'] === "1") init();
 		window.onunload = function() {
 			parent.postMessage("Users:Offline", "*");
 			parent.postMessage("NewMsg:-", "*");
