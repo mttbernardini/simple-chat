@@ -11,11 +11,6 @@ function playAudio(id) {
 		getAudioById(id).play();
 }
 
-function parseJSON(string) {
-	if (typeof(JSON)=="object" && JSON.parse) return JSON.parse(string);
-	else return eval("(" + string + ")");
-}
-
 function decodeHTML(str){
 	var temp=document.createElement("pre");
 	temp.innerHTML=str;
@@ -46,7 +41,7 @@ function setMessages() {
 
 		var m_old=parseInt(document.getElementById("n-messages").innerHTML);
 
-		obj = parseJSON(msgReq.responseText);
+		obj = JSON.parse(msgReq.responseText);
 
 		if (obj.newmgs=="overload")
 			self.location.reload();
@@ -81,7 +76,7 @@ function setMessages() {
 function setOnlines() {
 	if(onlReq.readyState == 4 && onlReq.status == 200) {
 
-		var obj = parseJSON(onlReq.responseText);
+		var obj = JSON.parse(onlReq.responseText);
 
 		var o_old=parseInt(document.getElementById('users-online').innerHTML);
 
@@ -123,7 +118,7 @@ function doPost() {
 		postReq.open("POST", link , true);
 		postReq.onreadystatechange = function() {
 			if (postReq.readyState==4 && postReq.status==200) {
-				var obj = parseJSON(postReq.responseText);
+				var obj = JSON.parse(postReq.responseText);
 				par.removeAttribute("class");
 				par.outerHTML = obj.content;
 				objDiv.scrollTop = objDiv.scrollHeight;
@@ -164,7 +159,7 @@ function doRenew() {
 	renewReq.open("GET", link, true);
 	renewReq.onreadystatechange=function(){
 		if (renewReq.readyState==4 && renewReq.status==200) {
-			var obj = parseJSON(renewReq.responseText);
+			var obj = JSON.parse(renewReq.responseText);
 			if (obj.status=="done" && obj.action=="newdata") init(obj.newData);
 			else if (obj.status=="fail") {
 				switch(obj.action) {
