@@ -1,37 +1,37 @@
 <?php
-//Manutenzione e Beta testing
-$maint=false;
-$beta=false;
-$noIE=false;
+// Maintenance and Beta Testing
+$maint = false;
+$beta  = false;
+$noIE  = false;
 
-//Valore dei cookie di manutenzione e beta testing
-$maintValue="1293";
-$betaValue="1234";
+// Cookie values for overriding maint and beta mode
+$maintValue = "1293";
+$betaValue  = "1234";
 
-//Versione chat
-$title="Simple Chat";
-$version="3.1";
-$versLink="changelog.md";
+// Chat settings and strings
+$title          = "Simple Chat";
+$version        = "3.1";
+$versLink       = "changelog.md";
+$welcomeMsg     = "Questa è una semplice chatroom sviluppata in PHP.";
+$clearDate      = "2017-01-31";
 
-//Impostazioni messaggi
-$welcomeMsg = "Questa è una semplice chatroom sviluppata in php.";
-$clearDate = "2017-01-31";
-$maxMsgShown = 120;
-$timestampInter = 2; //Show timestamp when between two messages there are more than x minutes
-$timestampEach = 30; //Show timestamp anyway each x minutes
+// Messages settings
+$maxMsgShown    = 120;
+$timestampInter = 2;  // Show timestamp when between two messages there are more than x minutes
+$timestampEach  = 30; // Show timestamp anyway each x minutes
 
-//Sessione di login (s)
-$expireTime=8;
+// Expiration time for login session (seconds)
+$expireTime = 8;
 
-//Tempo di refreshing (s)
-$refreshAll=3;
-$renewSession=3;
+// Refreshing timerate on app (seconds)
+$refreshAll   = 3;
+$renewSession = 3;
 
-//File liste (pseudodatabase)
-$onlineSrc=__DIR__."/data/online.xml";
-$msgSrc=__DIR__."/data/msg.xml";
+// Path to xml database
+$onlineSrc = __DIR__ . "/data/online.xml";
+$msgSrc    = __DIR__ . "/data/msg.xml";
 
-//Altre impostazioni
+// Log settings
 $logger = array(
 	"users" => true,
 	"login/out" => true,
