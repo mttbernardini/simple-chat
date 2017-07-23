@@ -1,12 +1,12 @@
-# simple-chat, una chatroom in PHP ridotta all'osso e senza database #
+# simple-chat: a minimal PHP chatroom #
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/69298e5725ae45e983167175ab365a1c)](https://www.codacy.com/app/mttbernardini/simple-chat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mttbernardini/simple-chat&amp;utm_campaign=Badge_Grade)
 
-Questa chat non promette nulla di più di quanto dichiarato. È una chatroom sviluppata in PHP (partendo come modello da [Micro Chat][1]) senza account (basta un nickname per entrare) e senza database (memorizza i messaggi e le altre informazioni in file xml).
+A simple chatroom developed in PHP (using [Micro Chat][1] as template) with no authentication (only a not chosen nickname is needed to login) and without a database (messages and status are stored in xml files). Also, the message fetching is polling based (no instant messaging, expect a delay of some seconds).
 
-Questo è stato il mio primo progetto in assoluto con cui ho imparato a programmare (avevo 14 anni). In particolare è nato come quello di una chat di gruppo per la mia classe (potreste trovare dei riferimenti a riguardo nei commit).
+This is the first project I actually learned to program with (I was 14) and it was conceived as a chatroom for my classmates (You might find references in early commits).
 
-Quindi non siate severi, sono consapevole che il codice è infantile e illeggibile. Il mio intento è quello di migliorarlo e generalizzarlo in modo che questo progetto (o una sua parte) possa tornare utile a qualcuno.
+As a result, the source code is pretty messy and illegible. My intention is to enhance it and generalize everything in the hope of making this project (or part of it) useful for someone.
 
 ----------------
 
