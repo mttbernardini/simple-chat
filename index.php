@@ -34,11 +34,9 @@ else {
 	</style>
 	<![endif]-->
 
-	<script type="text/javascript" src="./assets/js/get_variables.js"></script>
 	<script type="text/javascript" src="./assets/js/dialog.js"></script>
 	<script type="text/javascript">
 	<![CDATA[
-		var _GET = GETvars();
 		dialogSettings = {
 			defTitle: "Messaggio",
 			defContent: " ",
@@ -46,15 +44,15 @@ else {
 			cancelText: "Annulla"
 		};
 		var timerAll, timerRenew;
-		var timeAll = <?php echo $refreshAll; ?>;
-		var timeRenew = <?php echo $renewSession; ?>;
-		var nickName = "<?php echo $nickname; ?>";
+		var timeAll = <?= $refreshAll; ?>;
+		var timeRenew = <?= $renewSession; ?>;
+		var nickName = "<?= $nickname; ?>";
 	//]]>
 	</script>
 	<script type="text/javascript" src="./assets/js/main.js"></script>
 </head>
 
-<body onload="if (_GET['login']==1) { UpdateTimer(); doRenew(); }">
+<body <?php if ($_GET['login']) echo 'onload="UpdateTimer(); doRenew();"'; ?> >
 
 	<audio id="new-msg" preload="auto">
 		<source type="audio/mpeg" src="./assets/audio/new_msg.mp3" />
@@ -98,7 +96,7 @@ else {
 	<script type="text/javascript">
 	<![CDATA[
 		document.getElementById("JSdisabled").style.display="none";
-		if (_GET['login'] === "1") init();
+		<?php if ($_GET['login']) echo "init();\n"; ?>
 		window.onunload = function() {
 			parent.postMessage("Users:Offline", "*");
 			parent.postMessage("NewMsg:-", "*");
