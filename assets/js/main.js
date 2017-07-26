@@ -36,7 +36,7 @@ function decodeHTML(str){
 
 //The rest of the code
 
-msgReq = new XMLHttpRequest(); // TODO: handle unsupported fallback
+msgReq = new XMLHttpRequest();
 onlReq = new XMLHttpRequest();
 renewReq = new XMLHttpRequest();
 

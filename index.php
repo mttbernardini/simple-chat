@@ -111,6 +111,7 @@ else {
 	<script type="text/javascript">
 	<![CDATA[
 		document.getElementById("JSdisabled").style.display="none";
+		if (!"XMLHttpRequest" in window) document.getElementById("noAJAX").style.display = "block";
 		<?php if ($_GET['login']) echo "init();\n"; ?>
 		window.onunload = function() {
 			parent.postMessage("Users:Offline", "*");
