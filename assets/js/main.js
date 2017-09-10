@@ -221,6 +221,8 @@ function inpWrite(val) {
 
 function inpFormat(type) {
 	var format;
+	var input = document.getElementById("msg");
+
 	switch(type) {
 		case "b":
 			format = "grassetto"; break;
@@ -233,51 +235,45 @@ function inpFormat(type) {
 	dialog({
 		type: "prompt",
 		title: "Formattazione guidata",
-		content: "Inserisci il testo da formattare in "+format,
-		callback: inpFormat2,
-		vars: { t: type }
+		content: "Inserisci il testo da formattare in "+format
+	})
+	.then(function(box) {
+		if (box.action && box.value !== "") {
+			input.value += "[" + type + "]" + box.value + "[/" + type + "]";
+			input.focus();
+		}
 	});
 }
 
-function inpFormat2(o) {
+function inpLink() {
 	var input = document.getElementById("msg");
-	if (o.action && o.value !== "") {
-		input.value += "[" + o.vars.t + "]" + o.value + "[/" + o.vars.t + "]";
-		input.focus();
-	}
-}
 
-function inpLink(obj) {
-	var input = document.getElementById("msg");
-	obj = obj || new Object();
-
-	if (typeof obj.id === "undefined")
-		dialog({
-			type: "prompt",
-			title: "Formattazione guidata",
-			content: "Inserisci il link della pagina web (includi anche http://)",
-			placeholder: "http://",
-			id: "link",
-			callback: inpLink
-		});
-
-	else if (obj.id === "link" && obj.value !== "" && obj.action)
-		dialog({
-			type: "prompt",
-			title: "Formattazione guidata",
-			content: "Inserisci il testo da visualizzare (facoltativo)",
-			id: "txt",
-			callback: inpLink,
-			vars: {link: obj.value}
-		});
-
-	else if (obj.id === "txt" && obj.action) {
-		var txt  = obj.value;
-		var link = obj.vars.link;
-		if (txt !== "") input.value += '[url='+link+']'+txt+'[/url]';
-		else input.value += '[url]'+link+'[/url]';
-		input.focus();
-	}
+	dialog({
+		type: "prompt",
+		title: "Formattazione guidata",
+		content: "Inserisci il link della pagina web (includi anche http://)",
+		placeholder: "http://"
+	})
+	.then(function(box1) {
+		if (box1.action)
+			return dialog({
+				type: "prompt",
+				title: "Formattazione guidata",
+				content: "Inserisci il testo da visualizzare (facoltativo)",
+				data: {url: box1.value}
+			});
+	})
+	.then(function(box2) {
+		if (box2 && box2.action) {
+			var txt = box2.value.trim();
+			var url = box2.data.url;
+			if (txt !== "")
+				input.value += '[url='+url+']'+txt+'[/url]';
+			else
+				input.value += '[url]'+url+'[/url]';
+			input.focus();
+		}
+	});
 }
 
 function skipBT() {
