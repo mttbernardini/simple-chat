@@ -1,16 +1,16 @@
 /*
  *
- * Default stylesheet for the dialogWindow
+ * Default stylesheet for dialog.js
  *
  * NB: the box-shadow and the background transparency are compatible only with browsers which support CSS3.
- * You can use "prefixfree.js" to automatically add vendor prefixes. (https://github.com/LeaVerou/prefixfree)
+ * You can use -prefix-free to automatically add vendor prefixes. (https://github.com/LeaVerou/prefixfree)
  *
- * Version: 2.1
+ * Version: 3.0
  * Copyright (c) 2015 Matteo Bernardini
  * Licensed under the MIT License (refer to the LICENSE file for further information).
  *
  * Check this project on GitHub:
- * http://github.com/mttbernardini/dialog
+ * https://github.com/mttbernardini/dialog
  *
  */
 
