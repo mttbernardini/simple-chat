@@ -18,7 +18,7 @@
 
 function getAudioById(id) {
 	if (document.getElementById(id).play)
-	return document.getElementById(id);
+		return document.getElementById(id);
 	return document.getElementById(id).getElementsByTagName("embed")[0];
 }
 
@@ -27,9 +27,9 @@ function playAudio(id) {
 		getAudioById(id).play();
 }
 
-function decodeHTML(str){
-	var temp=document.createElement("pre");
-	temp.innerHTML=str;
+function decodeHTML(str) {
+	var temp = document.createElement("pre");
+	temp.innerHTML = str;
 	return temp.firstChild.nodeValue ? temp.firstChild.nodeValue : str;
 }
 
@@ -213,15 +213,8 @@ function muteSound(check) {
 	else { a.muted=0; b.muted=0; c.muted=0; d.muted=0; document.cookie="muteSound=false;"+etc; }
 }
 
-function inpWrite(val) {
-	var input = document.getElementById("msg");
-	input.value += val;
-	input.focus();
-}
-
-function inpFormat(type) {
+function inpFormat(msgBox, type) {
 	var format;
-	var input = document.getElementById("msg");
 
 	switch(type) {
 		case "b":
@@ -239,15 +232,13 @@ function inpFormat(type) {
 	})
 	.then(function(box) {
 		if (box.action && box.value !== "") {
-			input.value += "[" + type + "]" + box.value + "[/" + type + "]";
-			input.focus();
+			msgBox.value += "[" + type + "]" + box.value + "[/" + type + "]";
+			msgBox.focus();
 		}
 	});
 }
 
-function inpLink() {
-	var input = document.getElementById("msg");
-
+function inpLink(msgBox) {
 	dialog({
 		type: "prompt",
 		title: "Formattazione guidata",
@@ -268,12 +259,30 @@ function inpLink() {
 			var txt = box2.value.trim();
 			var url = box2.data.url;
 			if (txt !== "")
-				input.value += '[url='+url+']'+txt+'[/url]';
+				msgBox.value += '[url='+url+']'+txt+'[/url]';
 			else
-				input.value += '[url]'+url+'[/url]';
-			input.focus();
+				msgBox.value += '[url]'+url+'[/url]';
+			msgBox.focus();
 		}
 	});
+}
+
+function handleTools(e) {
+	e = e || window.event;
+	var target = e.target || e.srcElement;
+	var msgBox = document.getElementById("msg");
+	var text = target.getAttribute("data-text");
+
+	if (target.tagName === "img") {
+		msgBox.value += text;
+		msgBox.focus();
+	}
+	else if(target.tagName === "button") {
+		if (text === "url")
+			inpLink(msgBox);
+		else
+			inpFormat(msgBox, text);
+	}
 }
 
 function skipBT() {
@@ -315,6 +324,9 @@ function init(req) {
 	document.getElementById("nick").innerHTML = nickName;
 	document.getElementById("inputNewName").value = decodeHTML(nickName);
 	muteSound(document.getElementById("muteSound"));
+
+	// bind events
+	document.getElementById("tools").addEventListener("click", handleTools, false);
 }
 
 parent.postMessage("Users:Offline", "*");

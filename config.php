@@ -31,6 +31,24 @@ $renewSession = 3;
 $onlineSrc = __DIR__ . "/data/online.xml";
 $msgSrc    = __DIR__ . "/data/msg.xml";
 
+// Emoticon mapping
+$emot_path = "./assets/emoticons/";
+$emot_map = array(
+	":)" => ["happy.gif", "felice"],
+	":D" => ["very_happy.gif", "sorridente"],
+	";)" => ["wink.gif", "occhiolino"],
+	":P" => ["tongue.gif", "linguaccia"],
+	":(" => ["sad.gif", "triste"],
+	";(" => ["cry.gif", "in lacrime"],
+	":4" => ["angry.gif", "arrabbiato"],
+	":S" => ["confused.gif", "confuso"],
+	":1" => ["thoughtful.gif", "pensieroso"],
+	":?" => ["dont_know.gif", "non lo so"],
+	":o" => ["omg.gif", "sorpreso"],
+	":|" => ["surprised.gif", "stupito"],
+	":$" => ["embarrassed.gif", "in imbarazzo"]
+);
+
 // Log settings
 $logger = array(
 	"users" => true,

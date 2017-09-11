@@ -16,17 +16,24 @@
  * limitations under the License.
  */
 
+require_once('../config.php');
+
 //FORMAT THE STRING
 function format($string) {
 
+	global $emot_map, $emot_path;
+
 	$string = htmlspecialchars($string, ENT_COMPAT, "UTF-8");
 
-	//replace emoticons
-	$emot=array(':)'=>'happy', ':D'=>'very_happy', ':d'=>'very_happy', ';)'=>'wink', ':P'=>'tongue', ':p'=>'tongue', ':('=>'sad', ':4'=>'angry', ';('=>'cry', ':S'=>'confused', ':s'=>'confused', ':?'=>'dont_know', ':|'=>'surprised', ':o'=>'omg', ':O'=>'omg', ':1'=>'thoughtful', ':$'=>'embarrassed');
-	$emoticons='/(:\)|:D|;\)|:P|:\(|:4|;\(|:S|:\?|:\||:o|:1|:\$)/i';
+	$emot_regex = array();
 
-	$string=preg_replace_callback($emoticons, function($m) use ($emot) {
-		return '<img alt=" '.$m[0].'" src="./assets/emoticons/'.$emot[$m[0]].'.gif" class="emot" />';
+	foreach ($emot_map as $emot => $v) {
+		$emot_regex[] = "/(" . preg_quote($emot, "/") . ")/";
+	}
+
+	// replace emoticons
+	$string=preg_replace_callback($emot_regex, function($m) use ($emot_map, $emot_path) {
+		return '<img alt="'.$m[0].'" src="'.$emot_path.$emot_map[$m[0]][0].'" class="emot" />';
 	}, $string);
 
 	//replace common errors

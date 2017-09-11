@@ -33,7 +33,7 @@
 <section id="sender" onmouseover="document.getElementById('msg').focus();" onkeyup="keypressed(event);">
 
 	<div id="tools">
-		<?php require(__DIR__.'/tools.html'); ?>
+		<?php require(__DIR__.'/tools.php'); ?>
 	</div>
 
 	<div>
