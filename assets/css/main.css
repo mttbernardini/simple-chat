@@ -225,7 +225,7 @@ input[type="text"]:focus {
 }
 
 /* IN #settings */
-#closeSettings {
+#close-settings-btn {
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -303,7 +303,7 @@ p {
 	display: none;
 }
 
-#skip {
+#skip-btn {
 	position: relative;
 	bottom: 1px;
 	width: 337px;

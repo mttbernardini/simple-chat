@@ -100,8 +100,12 @@ function setOnlines() {
 }
 
 // Post message writed
-function doPost() {
-	var message = document.getElementById("msg").value.replace(/^\s+/, "");
+function doPost(e) {
+	e = e || window.event;
+	e.preventDefault && e.preventDefault();
+
+	var message = document.getElementById("msg").value.trim();
+
 	if (message !== "") {
 
 		var n = document.getElementById("n-messages");
@@ -134,6 +138,8 @@ function doPost() {
 		postReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		postReq.send(vars);
 	}
+
+	return false;
 }
 
 // Reloading request
@@ -161,7 +167,7 @@ function doRenew() {
 	var randomnumber = Math.floor(Math.random()*10000);
 	var link="./actions/renew_usr.php?";
 	link += "nick="+encodeURIComponent(nickName);
-	link += "&audio="+document.getElementById("muteSound").checked;
+	link += "&audio="+document.getElementById("mute-switch").checked;
 	link += "&rnd="+randomnumber;
 	renewReq.open("GET", link, true);
 	renewReq.onreadystatechange=function(){
@@ -185,21 +191,17 @@ function doRenew() {
 	timerRenew = setTimeout("doRenew()", timeRenew*1000);
 }
 
-function changeName() {
+function changeName(e) {
+	e = e || window.event;
+	e.preventDefault && e.preventDefault();
 	var oldn = encodeURIComponent(nickName);
 	var newn = encodeURIComponent(document.getElementById("inputNewName").value);
 	var link = "user.php?do=changename&oldnick="+oldn+"&newnick="+newn;
 	location.href = link;
+	return false;
 }
 
-function keypressed(e){
-	if (e.keyCode === 13) {
-		doPost();
-		return false;
-	}
-}
-
-function muteSound(check) {
+function muteSound() {
 	var a = getAudioById("new-msg");
 	var b = getAudioById("send-msg");
 	var c = getAudioById("new-user");
@@ -209,7 +211,7 @@ function muteSound(check) {
 	anno.setFullYear(anno.getFullYear() +1);
 	var etc = " expires=" + anno.toGMTString();
 
-	if (check.checked) { a.muted=1; b.muted=1; c.muted=1; d.muted=1; document.cookie="muteSound=true;"+etc; }
+	if (this.checked) { a.muted=1; b.muted=1; c.muted=1; d.muted=1; document.cookie="muteSound=true;"+etc; }
 	else { a.muted=0; b.muted=0; c.muted=0; d.muted=0; document.cookie="muteSound=false;"+etc; }
 }
 
@@ -285,17 +287,7 @@ function handleTools(e) {
 	}
 }
 
-function skipBT() {
-	document.getElementById("skip").style.display="none";
-	var a = document.getElementById("messages");
-	a.scrollTop=a.scrollHeight;
-}
 
-function checkBtn(div) {
-	var btn = document.getElementById("skip").style;
-	if ((div.scrollHeight-div.scrollTop) <= 320 && btn.display === "block")
-		btn.display = "none";
-}
 
 function init(req) {
 	//FIX AUDIO PLAYING ON iDEVICES
@@ -315,7 +307,7 @@ function init(req) {
 
 	if (typeof req === "object") {
 		nickName = req.nickName;
-		document.getElementById("muteSound").checked = req.muteSound;
+		document.getElementById("mute-switch").checked = req.muteSound;
 	}
 	else {
 		cont = document.getElementById("messages");
@@ -323,10 +315,35 @@ function init(req) {
 	}
 	document.getElementById("nick").innerHTML = nickName;
 	document.getElementById("inputNewName").value = decodeHTML(nickName);
-	muteSound(document.getElementById("muteSound"));
+	muteSound(document.getElementById("mute-switch"));
 
-	// bind events
+	// bind elements
 	document.getElementById("tools").addEventListener("click", handleTools, false);
+	document.getElementById("mute-switch").addEventListener("change", muteSound, false);
+	document.getElementById("msg-form").addEventListener("submit", doPost, false);
+	document.getElementById("changename-form").addEventListener("submit", changeName, false);
+	document.getElementById("messages").addEventListener("scroll", function(){
+		var btn = document.getElementById("skip-btn");
+		if ((this.scrollHeight - this.scrollTop) <= 320 && btn.style.display === "block")
+			btn.style.display = "none";
+	}, false);
+	document.getElementById("skip-btn").addEventListener("click", function(){
+		this.style.display = "none";
+		var a = document.getElementById("messages");
+		a.scrollTop = a.scrollHeight;
+	}, false);
+	document.getElementById("sender").addEventListener("mouseover", function(){
+		document.getElementById('msg').focus();
+	}, false);
+	document.getElementById("settings-btn").addEventListener("click", function(){
+		document.getElementById('settings').style.display = "block";
+	}, false);
+	document.getElementById("close-settings-btn").addEventListener("click", function(){
+		document.getElementById('settings').style.display = "none";
+	}, false);
+	document.getElementById("logout-btn").addEventListener("click", function(){
+		location.href = "user.php?do=logout";
+	}, false);
 }
 
 parent.postMessage("Users:Offline", "*");
