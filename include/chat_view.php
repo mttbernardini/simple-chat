@@ -10,7 +10,7 @@
 
 	<div id="info">
 		<div style="margin: 1em;">
-			<?php require(__DIR__."/info.html"); ?>
+			<div>Designed &amp; Developed by <a href="https://mttbernardini.github.io/" target="_blank">Matteo Bernardini</a></div>
 		</div>
 	</div>
 
