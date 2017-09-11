@@ -47,9 +47,19 @@ body {
 	position: relative;
 }
 
-/* FORM DI ACCESSO */
-form div {
+/* FORM DI LOGIN */
+.login-form {
+	text-align: center;
+	margin: 0px 20%;
+}
+
+.login-form div {
 	margin: 5px 0px;
+}
+
+.login-options {
+	padding-left: 60px;
+	text-align: left;
 }
 
 /* SEZIONI */
