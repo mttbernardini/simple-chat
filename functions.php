@@ -18,16 +18,8 @@
 
 require_once("config.php");
 
-//in caso di manutenzione:
-if ($maint && $_COOKIE['maint'] != $maintValue && !($beta && $_COOKIE['beta'] == $betaValue)) {
-    require("./include/maintenance.html");
-    exit();
-}
-
-//Escludere IE dalla Beta
-if ($noIE && $beta && $_COOKIE['beta'] == $betaValue && stripos($_SERVER['HTTP_USER_AGENT'], "MSIE") !== false) {
-    require("./include/maintenance-msie.html");
-    exit();
+function createMaint() {
+	require("./include/maintenance.html");
 }
 
 function createForm(){
@@ -63,6 +55,7 @@ if (isset($_POST['aut'])) {
     header("Location: user.php?do=login");
     exit();
 }
+
 if (isset($_GET['logout']) && $_COOKIE['logged'] == 1) {
     header("Location: user.php?do=logout");
     exit();
@@ -72,9 +65,12 @@ $nickname = trim(htmlspecialchars($_COOKIE['username'], ENT_QUOTES, "UTF-8", fal
 
 
 function switchCases() {
-    global $nickname, $timeToExpire;
+    global $nickname, $timeToExpire, $maint, $maintValue;
 
-    if (isset($_GET['invalid']))
+	if ($maint && $_COOKIE['maint'] != $maintValue)
+	    createMaint();
+
+    else if (isset($_GET['invalid']))
         createError();
 
     elseif (isset($_GET['logout']) && isset($_GET['login'])) {

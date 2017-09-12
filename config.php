@@ -1,12 +1,9 @@
 <?php
-// Maintenance and Beta Testing
+// Maintenance mode
 $maint = false;
-$beta  = false;
-$noIE  = false;
 
-// Cookie values for overriding maint and beta mode
+// Cookie values for overriding maintenance mode
 $maintValue = "1293";
-$betaValue  = "1234";
 
 // Chat settings and strings
 $title          = "Simple Chat";
