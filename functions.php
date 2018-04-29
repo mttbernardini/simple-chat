@@ -19,16 +19,16 @@
 require_once("config.php");
 
 function createMaint() {
-	require("./include/maintenance.html");
+	require("./views/maintenance.html");
 }
 
 function createForm(){
 	global $expireTime;
-	require("./include/login_view.php");
+	require("./views/login_view.php");
 }
 
 function createChat() {
-	require("./include/chat_view.php");
+	require("./views/chat_view.php");
 }
 
 function createError() {
