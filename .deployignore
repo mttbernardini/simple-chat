@@ -1,0 +1,10 @@
+/future/
+/blogScript.js
+/blogpart.html
+/oldBlogPart.html
+LICENSE
+Makefile
+README.md
+.deployignore
+.editorconfig
+.gitignore
