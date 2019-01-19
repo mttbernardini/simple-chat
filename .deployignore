@@ -2,6 +2,8 @@
 /blogScript.js
 /blogpart.html
 /oldBlogPart.html
+/data/*.xml
+/data/*.db3
 LICENSE
 Makefile
 README.md

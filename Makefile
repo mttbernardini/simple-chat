@@ -12,5 +12,5 @@ symulate:
 
 deploy:
 	rsync $(RFLAGS) --exclude-from $(IGNNAME) ./ $(DEPPATH)
-	chgrp -R www-data $(DEPPATH)
-	chmod -R g+rw $(DEPPATH)
+	chgrp -R www-data $(DEPPATH) || echo "chgrp: operation ignored"
+	chmod -R g+rw $(DEPPATH) || echo "chmod: operation ignored"
